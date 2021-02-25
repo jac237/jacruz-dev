@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "name": "jacruz-dev-api",
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "src/index.js"
+    }
+  ],
+  "alias": [
+    "jacruz-dev-api"
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "8080"
+  }
+}
