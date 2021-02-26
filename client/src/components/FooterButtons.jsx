@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { Button, Drawer, Row, Col } from 'antd';
-import { CrownFilled } from '@ant-design/icons';
+import { EditFilled } from '@ant-design/icons';
 import Comments from './Comments';
 
 const classes = {
   root: {
-    padding: 20,
+    padding: 40,
   },
   drawer: {
     padding: 0,
   },
   commentButton: {
-    fontFamily: 'system-ui',
+    fontFamily: 'Arial',
+    fontSize: 16,
     fontWeight: 600,
+    padding: "0px 20px"
   },
   commentIcon: {
     color: 'gold',
-    fontSize: 20,
+    fontSize: 18,
   },
 };
 
@@ -37,7 +39,7 @@ const FooterButtons = () => {
           <Button
             type="primary"
             size="large"
-            icon={<CrownFilled style={classes.commentIcon} />}
+            icon={<EditFilled style={classes.commentIcon} />}
             onClick={showDrawer}
             style={classes.commentButton}
           >
