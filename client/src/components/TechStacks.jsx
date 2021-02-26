@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Col, Space, Typography } from 'antd';
+import { Row, Col, Space, Typography, Collapse } from 'antd';
 import {
   JavascriptIcon,
   JavaIcon,
@@ -50,6 +50,7 @@ import {
 } from './icons';
 
 const { Title } = Typography;
+const { Panel } = Collapse;
 
 const rows = [
   {
@@ -124,44 +125,54 @@ const rows = [
     icons: [DoordashIcon, SpotifyIcon, SoundcloudIcon, TwitchIcon],
   },
 ];
+
 const level = 4;
 const gutter = 16;
 const xs = 8;
 const sm = 4;
 const md = 3;
 const xxl = 2;
-const rowStyle = {
-  background: '#f5f5f5',
-  borderRadius: '10px',
-  padding: '20px',
+const classes = {
+  root: {
+    display: 'flex',
+  },
+  container: {
+    background: '#f5f5f5',
+    borderRadius: '10px',
+    padding: '10px 10px 5px 10px',
+  },
+  panel: {
+    paddingBottom: 20,
+  },
 };
 
 const TeckStacks = () => {
   return (
-    <>
-      <Space direction="vertical" size="large" style={{ display: 'flex' }}>
-        {rows.map(({ title, icons }) => (
-          <div style={rowStyle} key={title}>
-            <Title level={level}>{title}</Title>
-            <Row gutter={[gutter, gutter]}>
-              {icons.map((Icon, index) => (
-                <Col
-                  xs={xs}
-                  sm={sm}
-                  md={md}
-                  lg={md}
-                  xl={md}
-                  xxl={xxl}
-                  key={index}
-                >
-                  <Icon />
-                </Col>
-              ))}
-            </Row>
-          </div>
-        ))}
-      </Space>
-    </>
+    <Space direction="vertical" size="large" style={classes.root}>
+      {rows.map(({ title, icons }) => (
+        <div style={classes.container} key={title}>
+          <Collapse ghost>
+            <Panel header={<Title level={level}>{title}</Title>} key={title}>
+              <Row gutter={[gutter, gutter]} style={classes.panel}>
+                {icons.map((Icon, index) => (
+                  <Col
+                    xs={xs}
+                    sm={sm}
+                    md={md}
+                    lg={md}
+                    xl={md}
+                    xxl={xxl}
+                    key={index}
+                  >
+                    <Icon />
+                  </Col>
+                ))}
+              </Row>
+            </Panel>
+          </Collapse>
+        </div>
+      ))}
+    </Space>
   );
 };
 
