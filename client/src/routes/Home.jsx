@@ -41,9 +41,9 @@ const Home = () => {
         </Content>
         <Footer>
           <FooterButtons />
-          <BuyMeACoffee />
         </Footer>
       </Layout>
+      <BuyMeACoffee />
     </div>
   );
 };
