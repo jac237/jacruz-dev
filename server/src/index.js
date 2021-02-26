@@ -19,17 +19,12 @@ mongoose
   });
 
 const whitelist = [
-  'http://localhost:3000/',
-  'https://react-9wmk5k.stackblitz.io/',
+  'http://localhost:3000',
+  'https://react-9wmk5k.stackblitz.io',
+  'https://jacruz.vercel.app',
 ];
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error(`Origin "${origin}" not allowed by CORS`));
-    }
-  },
+  origin: 'https://jacruz.vercel.app',
   preflightContinue: true,
   optionsSuccessStatus: 204,
 };

@@ -73,8 +73,8 @@ const rows = [
   {
     title: 'JacruzDev',
     description: 'Showcase projects and techstacks',
-    href: 'https://github.com/jac237/',
-    github: 'https://github.com/jac237/',
+    href: 'https://jacruz.vercel.app/',
+    github: 'https://github.com/jac237/jacruz-dev',
     src: 'https://i.imgur.com/O8rgHG5.png',
     rowStyles: { background: 'white' },
     imgStyles: {
@@ -90,7 +90,7 @@ const rows = [
       AntdesignIcon,
       Html5Icon,
       Css3AltIcon,
-      HerokuIcon,
+      VercelIcon,
     ],
   },
 ];

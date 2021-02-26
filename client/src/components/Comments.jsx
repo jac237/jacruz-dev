@@ -60,7 +60,7 @@ const LikeButton = ({ comment }) => {
   const onSubmitLike = async (userLike) => {
     try {
       const response = await API.likeComment(userLike);
-      console.log(response);
+      // console.log(response);
 
       if (response.success) {
         setIsLiked(response.liked);
@@ -171,7 +171,7 @@ const CommentInput = ({ setReloadComments }) => {
     try {
       const response = await API.addComment(newComment);
       setReloadComments(true);
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       console.log('addComment(): Something went wrong...');
     }
