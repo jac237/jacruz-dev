@@ -52,6 +52,7 @@ const Login = ({
 }) => {
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [user, setUser] = useState({});
+  const [buttonLoading, setButtonLoading] = useState(false);
 
   const onLoginSuccess = (response) => {
     console.log('Login was successful!');
@@ -88,7 +89,7 @@ const Login = ({
       ...user,
       comment: commentInput,
     };
-    onSubmitComment(newComment);
+    onSubmitComment(newComment, setButtonLoading);
   };
 
   const handleSubmitLike = () => {
@@ -97,7 +98,7 @@ const Login = ({
       comment_id: comment.comment_id,
       intent: isLiked ? 'Unlike' : 'Like',
     };
-    onSubmitLike(userLike);
+    onSubmitLike(userLike, setButtonLoading);
   };
 
   return (
@@ -150,6 +151,7 @@ const Login = ({
                 block
                 type="primary"
                 size="large"
+                loading={buttonLoading}
                 onClick={handleSubmitComment}
                 style={classes.submitButton}
               >
@@ -160,6 +162,7 @@ const Login = ({
                 block
                 type="primary"
                 size="large"
+                loading={buttonLoading}
                 onClick={handleSubmitLike}
                 style={classes.likeButton}
               >
