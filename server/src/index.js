@@ -22,9 +22,16 @@ const whitelist = [
   'http://localhost:3000',
   'https://react-9wmk5k.stackblitz.io',
   'https://jacruz.vercel.app',
+  'https://jacruz.dev/',
 ];
 const corsOptions = {
-  origin: 'https://jacruz.vercel.app',
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Origin "${origin}" not allowed by CORS`));
+    }
+  },
   preflightContinue: true,
   optionsSuccessStatus: 204,
 };
@@ -59,8 +66,8 @@ app.get('/api/comments/all', (req, res) => {
 app.post('/api/comments/add', (req, res) => {
   const user = req.body;
 
-  if (Object.keys(user).length === 0) {
-    return res.json({
+  if (!user.googleId) {
+    return res.status(400).json({
       message: 'Google login required.',
     });
   }
@@ -76,22 +83,22 @@ app.post('/api/comments/add', (req, res) => {
     verified: user.googleId === verifiedId,
   });
 
-  comment.save((err, data) => {
+  comment.save((err, newComment) => {
     if (err) {
       return console.error(err.message);
     }
 
-    console.log(data);
+    console.log(newComment);
     return res.json({
-      created_at: data.created_at,
-      comment_id: data.comment_id,
-      name: data.name,
-      email: data.email,
-      imageUrl: data.imageUrl,
-      comment: data.comment,
-      verified: data.verified,
-      likes: data.likes,
-      replies: data.replies,
+      created_at: newComment.created_at,
+      comment_id: newComment.comment_id,
+      name: newComment.name,
+      email: newComment.email,
+      imageUrl: newComment.imageUrl,
+      comment: newComment.comment,
+      verified: newComment.verified,
+      likes: newComment.likes,
+      replies: newComment.replies,
     });
   });
 });
@@ -102,10 +109,9 @@ app.put('/api/comments/like', (req, res) => {
 
   // Find the comment to modify
   Comment.findOne({ comment_id: user.comment_id }, (err, comment) => {
-    if (err) {
-      return res.json({
-        message: err.message,
-        success: false,
+    if (!user.comment_id) {
+      return res.status(400).json({
+        message: 'Comment ID required.',
       });
     }
 
@@ -117,11 +123,12 @@ app.put('/api/comments/like', (req, res) => {
         comment.liked_by = [...comment.liked_by, user.googleId];
 
         comment.save((err, updatedComment) => {
-          if (err)
-            return res.json({
+          if (err) {
+            return res.status(500).json({
               message: err.message,
               success: false,
             });
+          }
 
           console.log(updatedComment);
           return res.json({
@@ -144,11 +151,12 @@ app.put('/api/comments/like', (req, res) => {
         );
 
         comment.save((err, updatedComment) => {
-          if (err)
-            return res.json({
+          if (err) {
+            return res.status(500).json({
               message: err.message,
               success: false,
             });
+          }
 
           console.log(updatedComment);
           return res.json({
@@ -158,7 +166,7 @@ app.put('/api/comments/like', (req, res) => {
           });
         });
       } else {
-        return res.json({
+        return res.status(500).json({
           message: 'Error: User never liked this comment.',
           success: false,
         });
