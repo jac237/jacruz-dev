@@ -176,6 +176,7 @@ const CommentInput = ({ setReloadComments }) => {
       setReloadComments(true);
     } catch (error) {
       console.log('addComment(): Something went wrong...');
+      console.log(error);
     }
     hideModal(); // Reset modal visibility
     setButtonLoading(false);
@@ -222,6 +223,7 @@ const Comments = () => {
         console.log('Done.');
       } catch (error) {
         console.log('Unable to fetch comments, check connection.');
+        console.log(error);
         setComments([]);
       }
       setLoading(false);
