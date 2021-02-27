@@ -27,3 +27,12 @@ export async function likeComment(values) {
   });
   return response.data;
 }
+
+export async function logError(error) {
+  const response = await axios({
+    method: 'POST',
+    url: '/api/log/error',
+    data: error,
+  });
+  return response.data;
+}
