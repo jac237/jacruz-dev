@@ -57,8 +57,9 @@ const LikeButton = ({ comment }) => {
     setIsModalVisible(false);
   };
 
-  const onSubmitLike = async (userLike) => {
+  const onSubmitLike = async (userLike, setButtonLoading) => {
     try {
+      setButtonLoading(true);
       const response = await API.likeComment(userLike);
       // console.log(response);
 
@@ -70,11 +71,12 @@ const LikeButton = ({ comment }) => {
         message.warning(response.message);
         setIsLiked(false);
       }
-      hideModal();
     } catch (error) {
       console.log('LikeButton: Something went wrong...');
       message.error('LikeButton: Something went wrong...');
     }
+    hideModal();
+    setButtonLoading(false);
   };
 
   return (
@@ -167,15 +169,16 @@ const CommentInput = ({ setReloadComments }) => {
     setSearchLoading(false); // Reset modal visibility
   };
 
-  const onSubmitComment = async (newComment) => {
+  const onSubmitComment = async (newComment, setButtonLoading) => {
     try {
+      setButtonLoading(true);
       const response = await API.addComment(newComment);
       setReloadComments(true);
-      // console.log(response);
     } catch (error) {
       console.log('addComment(): Something went wrong...');
     }
     hideModal(); // Reset modal visibility
+    setButtonLoading(false);
     setCommentInput(''); // Reset comment input
   };
 
