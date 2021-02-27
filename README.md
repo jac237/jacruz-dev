@@ -6,7 +6,7 @@
 
 [`https://jacruz.vercel.app/`](https://jacruz.vercel.app/)
 
-Made with **React App**, **Ant Design**, **MongoDB**,& **Vercel**
+Made with **React App**, **Ant Design**, **MongoDB** & **Vercel**
 
 ## Resources
 
