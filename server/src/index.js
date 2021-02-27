@@ -41,6 +41,10 @@ app.get('/', (req, res) => {
   });
 });
 
+app.post('/api/log/error', (req, res) => {
+  return console.log(req.body);
+});
+
 const Comment = require('./models/Comment');
 
 // READ
