@@ -4,23 +4,18 @@ import { RestOutlined, HeartFilled } from '@ant-design/icons';
 
 const classes = {
   root: {
-    fontFamily: 'Brush Script MT, Brush Script Std, cursive',
+    fontFamily: '"Satisfy", cursive',
     background: 'black',
     textAlign: 'center',
     padding: '50px 0px',
   },
   button: {
-    height: 60,
-    fontSize: 30,
+    height: 50,
+    fontSize: 20,
     fontWeight: 'bold',
     background: '#ffdd00',
     borderColor: '#ffdd00',
-    paddingTop: 10,
-  },
-  coffeeIcon: {
-    fontSize: 30,
-    background: 'white',
-    borderRadius: '90% 90%',
+    paddingTop: 5,
   },
   heartIcon: {
     fontSize: 20,
@@ -35,7 +30,6 @@ const BuyMeACoffee = () => {
         id="coffee-button"
         size="large"
         style={classes.button}
-        icon={<RestOutlined style={classes.coffeeIcon} />}
         href="https://www.buymeacoffee.com/jcruz"
         target="_blank"
       >
