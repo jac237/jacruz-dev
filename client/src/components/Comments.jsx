@@ -15,12 +15,13 @@ import {
   MessageOutlined,
   CheckCircleFilled,
   SendOutlined,
+  CloseCircleFilled,
 } from '@ant-design/icons';
 import moment from 'moment';
 import * as API from '../API';
 import GoogleLogin from './GoogleLogin';
 
-const { Search } = Input;
+const { Search, TextArea } = Input;
 
 const classes = {
   root: {
@@ -32,6 +33,9 @@ const classes = {
   },
   search: {
     padding: '10px 0px 5px 0px',
+  },
+  textArea: {
+    margin: '10px 0px',
   },
   badge: {
     color: '#3897f0',
@@ -98,6 +102,7 @@ const LikeButton = ({ comment }) => {
       <Modal
         title={null}
         footer={null}
+        closeIcon={<CloseCircleFilled />}
         visible={isModalVisible}
         onCancel={hideModal}
       >
@@ -185,7 +190,7 @@ const CommentInput = ({ setReloadComments }) => {
 
   return (
     <>
-      <Search
+      {/* <Search
         placeholder="Share your thoughts..."
         value={commentInput}
         onChange={onChange}
@@ -193,10 +198,21 @@ const CommentInput = ({ setReloadComments }) => {
         enterButton={<SendOutlined />}
         loading={searchLoading}
         style={classes.search}
+      /> */}
+      <TextArea
+        placeholder="Share your thoughts..."
+        value={commentInput}
+        onChange={onChange}
+        onPressEnter={onSearch}
+        disabled={searchLoading}
+        style={classes.textArea}
+        autoSize={{ minRows: 1, maxRows: 3 }}
+        allowClear
       />
       <Modal
         title={null}
         footer={null}
+        closeIcon={<CloseCircleFilled />}
         visible={isModalVisible}
         onCancel={hideModal}
       >
