@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Mongodb } from '@styled-icons/simple-icons';
 import { Button, Drawer, Row, Col } from 'antd';
-import { EditFilled } from '@ant-design/icons';
 import Comments from './Comments';
 
 const classes = {
@@ -11,16 +12,24 @@ const classes = {
     padding: 0,
   },
   commentButton: {
+    color: '#e4e4e4',
     fontFamily: 'Arial',
     fontSize: 16,
     fontWeight: 600,
-    padding: "0px 20px"
+    padding: '0px 20px',
   },
   commentIcon: {
     color: 'gold',
     fontSize: 18,
   },
 };
+
+const MongodbIcon = styled(Mongodb)`
+  width: 25px;
+  height: 25px;
+  color: #57de42;
+  margin-right: 2px;
+`;
 
 const FooterButtons = () => {
   const [visible, setVisible] = useState(false);
@@ -39,7 +48,7 @@ const FooterButtons = () => {
           <Button
             type="primary"
             size="large"
-            icon={<EditFilled style={classes.commentIcon} />}
+            icon={<MongodbIcon />}
             onClick={showDrawer}
             style={classes.commentButton}
           >
