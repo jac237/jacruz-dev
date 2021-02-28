@@ -22,14 +22,15 @@ const whitelist = [
   'http://localhost:3000',
   'https://react-9wmk5k.stackblitz.io',
   'https://jacruz.vercel.app',
-  'https://jacruz.dev/',
+  'https://jacruz.dev',
 ];
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log(origin);
     if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
+      callback(null, true); // allow origin
     } else {
-      callback(new Error(`Origin "${origin}" not allowed by CORS`));
+      callback(new Error(`Origin ${origin} not allowed by CORS`));
     }
   },
   preflightContinue: true,
