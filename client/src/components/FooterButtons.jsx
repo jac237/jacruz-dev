@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Mongodb } from '@styled-icons/simple-icons';
 import { Button, Drawer, Row, Col } from 'antd';
+import { CloseCircleFilled } from '@ant-design/icons';
 import Comments from './Comments';
 
 const classes = {
@@ -56,8 +57,9 @@ const FooterButtons = () => {
           </Button>
           <Drawer
             placement="right"
-            width={350}
+            width={400}
             closable={true}
+            closeIcon={<CloseCircleFilled />}
             visible={visible}
             onClose={onClose}
             style={classes.drawer}
