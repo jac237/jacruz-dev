@@ -2,7 +2,7 @@
 const API_URL = 'https://jacruzdev-api.vercel.app/';
 const axios = require('axios').create({
   baseURL: API_URL,
-  timeout: 3000,
+  timeout: 5000,
 });
 
 export async function getAllComments() {
