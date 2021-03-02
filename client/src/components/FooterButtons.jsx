@@ -57,7 +57,7 @@ const FooterButtons = () => {
           </Button>
           <Drawer
             placement="right"
-            width={400}
+            width={350}
             closable={true}
             closeIcon={<CloseCircleFilled />}
             visible={visible}
