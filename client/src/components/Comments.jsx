@@ -28,8 +28,12 @@ const classes = {
     padding: 20,
   },
   title: {
+    fontSize: 16,
     fontWeight: 'bold',
     color: 'black',
+  },
+  comment: {
+    fontSize: 14,
   },
   search: {
     padding: '10px 0px 5px 0px',
@@ -38,6 +42,7 @@ const classes = {
     margin: '10px 0px',
   },
   badge: {
+    fontSize: 13,
     color: '#3897f0',
   },
   likeButton: {
@@ -190,7 +195,7 @@ const CommentInput = ({ setReloadComments }) => {
 
   return (
     <>
-      {/* <Search
+      <Search
         placeholder="Share your thoughts..."
         value={commentInput}
         onChange={onChange}
@@ -198,8 +203,8 @@ const CommentInput = ({ setReloadComments }) => {
         enterButton={<SendOutlined />}
         loading={searchLoading}
         style={classes.search}
-      /> */}
-      <TextArea
+      />
+      {/* <TextArea
         placeholder="Share your thoughts..."
         value={commentInput}
         onChange={onChange}
@@ -208,7 +213,7 @@ const CommentInput = ({ setReloadComments }) => {
         style={classes.textArea}
         autoSize={{ minRows: 1, maxRows: 3 }}
         allowClear
-      />
+      /> */}
       <Modal
         title={null}
         footer={null}
@@ -281,7 +286,7 @@ const Comments = () => {
                   setReloadComments={setReloadComments}
                 />,
               ]}
-              content={<p>{comment.comment}</p>}
+              content={<p style={classes.comment}>{comment.comment}</p>}
               datetime={<div>{moment(comment.created_at).fromNow()}</div>}
             />
           </List.Item>
