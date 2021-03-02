@@ -127,34 +127,44 @@ const Projects = () => {
             gutter={[16, 16]}
             wrap
           >
-            {entry.src && (
-              <Col>
-                <a href={entry.href} style={classes.link}>
-                  <img
-                    src={entry.src}
-                    alt={entry.title}
-                    className="project-link"
-                    style={entry.imgStyles}
-                  />
-                </a>
-              </Col>
-            )}
-            <Col>
+            <Col xs={7} sm={5} md={4} lg={3} style={{ textAlign: 'center' }}>
+              <a href={entry.href} style={classes.link}>
+                <img
+                  src={entry.src}
+                  alt={entry.title}
+                  className="project-link"
+                  style={entry.imgStyles}
+                />
+              </a>
+            </Col>
+            <Col xs={17} sm={19} md={18} lg={17}>
               <Title level={props.level}>{entry.title}</Title>
-              <p style={{ wordWrap: 'break-all' }}>{entry.description}</p>
-              <Space size="middle" wrap>
-                <Link href={entry.github}>
-                  <GithubOutlined
-                    style={{
-                      color: 'black',
-                      fontSize: props.size,
-                    }}
-                  />
-                </Link>
-                {entry.icons.map((Icon, index) => (
-                  <Icon height={props.size} width={props.size} key={index} />
-                ))}
-              </Space>
+              <p style={{ wordWrap: 'break-all', fontSize: 16 }}>
+                {entry.description}
+              </p>
+            </Col>
+            <Col span={24}>
+              <Row justify="center">
+                <Col>
+                  <Space size="middle" wrap>
+                    <Link href={entry.github}>
+                      <GithubOutlined
+                        style={{
+                          color: 'black',
+                          fontSize: props.size,
+                        }}
+                      />
+                    </Link>
+                    {entry.icons.map((Icon, index) => (
+                      <Icon
+                        height={props.size}
+                        width={props.size}
+                        key={index}
+                      />
+                    ))}
+                  </Space>
+                </Col>
+              </Row>
             </Col>
           </Row>
         ))}
