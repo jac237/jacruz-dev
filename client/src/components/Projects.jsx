@@ -51,8 +51,7 @@ const rows = [
     description: 'Unofficial UCSD course-searching web app',
     href: 'https://triton-search.vercel.app/',
     github: 'https://github.com/jac237/triton-search/',
-    src:
-      'https://raw.githubusercontent.com/jac237/triton-search/master/client/public/images/icons8-shark-48.png',
+    src: 'https://i.imgur.com/4tNogAf.png',
     rowStyles: { background: 'white' },
     imgStyles: {
       width: '80px',
