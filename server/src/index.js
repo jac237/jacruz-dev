@@ -53,6 +53,13 @@ app.post('/api/log/error', (req, res) => {
   return console.log(req.body);
 });
 
+app.get('/api/featured', (req, res) => {
+  res.json({
+    id: '145749',
+    ownerId: '48475',
+  });
+});
+
 const Comment = require('./models/Comment');
 
 // READ
