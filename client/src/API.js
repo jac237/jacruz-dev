@@ -5,6 +5,11 @@ const axios = require('axios').create({
   timeout: 5000,
 });
 
+export async function getFeaturedTrack() {
+  const response = await axios.get('/api/featured');
+  return response.data;
+}
+
 export async function getAllComments() {
   const response = await axios.get('/api/comments/all');
   return response.data;

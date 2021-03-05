@@ -3,6 +3,7 @@ import { Layout } from 'antd';
 import Navbar from '../components/Navbar';
 import NameTypical from '../components/NameTypical';
 import UserCard from '../components/UserCard';
+import FeaturedTrack from '../components/FeaturedTrack';
 import TechStacks from '../components/TechStacks';
 import Projects from '../components/Projects';
 import BuyMeACoffee from '../components/BuyMeACoffee';
@@ -36,6 +37,7 @@ const Home = () => {
         <Content style={classes.contentStyles}>
           <NameTypical />
           <UserCard />
+          <FeaturedTrack />
           <Projects />
           <TechStacks />
         </Content>
